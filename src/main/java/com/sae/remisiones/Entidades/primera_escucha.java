@@ -28,6 +28,15 @@ public class primera_escucha {
     @Column(name = "realizada")
     private boolean realizada;
 
+    public primera_escucha() {
+    }
+
+    public primera_escucha(String observacion, boolean realizada) {
+        this.observacion = observacion;
+        this.fecha_primera_escucha = LocalDate.now();
+        this.realizada = realizada;
+    }
+
     public int getId_primera_escucha() {
         return id_primera_escucha;
     }
