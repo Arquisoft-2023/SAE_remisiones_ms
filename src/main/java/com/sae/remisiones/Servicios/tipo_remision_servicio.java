@@ -9,8 +9,6 @@ public interface tipo_remision_servicio {
     
     tipo_remision findByIdTipoRemision(int id);
 
-    Boolean existsByIdTipoRemision(int id);
-
     tipo_remision saveTipoRemision(tipo_remision_DTO tipo_remision_DTO);
 
     tipo_remision updateTipoRemision(int id, tipo_remision_DTO tipo_remision_DTO);

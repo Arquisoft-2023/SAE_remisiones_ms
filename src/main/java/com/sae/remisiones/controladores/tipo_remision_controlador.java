@@ -3,6 +3,7 @@ package com.sae.remisiones.Controladores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,15 +23,10 @@ public class tipo_remision_controlador {
     @Autowired
     tipo_remision_servicio tipo_remision_servicio;
 
-    
-
-    
     @GetMapping("/lista")
     public ResponseEntity<?> findAll() {
         return new ResponseEntity<>(tipo_remision_servicio.findAll(), HttpStatus.OK);
     }
-    
-    
 
     @GetMapping({ "/buscar/{id}" })
     public ResponseEntity<?> findById(@PathVariable("id") int id) {
@@ -38,15 +34,15 @@ public class tipo_remision_controlador {
         return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.OK);
     }
 
-    /*@GetMapping({ "/buscar/{id}" })
-    public ResponseEntity<?> findById(@PathVariable("id") int id) {
-        tipo_remision tipo_remision = tipo_remision_servicio.findByIdTipoRemision(id);
-        return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.OK);
-    }*/
-
     @PostMapping("/crear")
     public ResponseEntity<?> save(@RequestBody tipo_remision_DTO tipo_remision_DTO) {
         tipo_remision tipo_remision = tipo_remision_servicio.saveTipoRemision(tipo_remision_DTO);
         return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> elimina(@PathVariable("id")int id) {
+        tipo_remision_servicio.deleteByIdTipoRemision(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

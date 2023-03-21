@@ -14,4 +14,5 @@ public class primera_escucha_DTO {
     private LocalDate fechaPrimeraEscucha;
     
     private boolean realizada;
+    
 }

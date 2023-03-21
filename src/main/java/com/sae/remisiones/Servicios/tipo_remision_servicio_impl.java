@@ -26,11 +26,6 @@ public class tipo_remision_servicio_impl implements tipo_remision_servicio{
     }
 
     @Override
-    public Boolean existsByIdTipoRemision(int id) {
-        return tipo_remision_repositorio.existsById(id);
-    }
-
-    @Override
     public List<tipo_remision> findAll() {
         return tipo_remision_repositorio.findAll();
     }
