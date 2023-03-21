@@ -35,7 +35,7 @@ public class solicitud_remision implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "id_tipo_remision")
-    private tipo_remision tipoSolicitud;
+    private tipo_remision tipoRemision;
 
     @Column(name = "usuario_un_estudiante")
     private String usuarioUnEstudiante;
@@ -44,7 +44,7 @@ public class solicitud_remision implements Serializable {
     private String usuarioUnDocente;
 
     @Column(name = "fecha_solicitud_remision")
-    private LocalDate fecha;
+    private LocalDate fechaSolicitudRemision;
 
     @Column(name = "justificacion")
     private String justificacion;

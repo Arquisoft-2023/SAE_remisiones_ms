@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sae.remisiones.DTO.tipo_remision_DTO;
 import com.sae.remisiones.Entidades.tipo_remision;
 import com.sae.remisiones.Mapper.tipo_remision_mapper;
-import com.sae.remisiones.repositorios.tipo_remision_repositorio;
+import com.sae.remisiones.Repositorios.tipo_remision_repositorio;
 
 
 @Service
@@ -20,13 +20,13 @@ public class tipo_remision_servicio_impl implements tipo_remision_servicio{
     tipo_remision_mapper tipo_remision_mapper;
 
     @Override
-    public void deleteById(int id) {
+    public void deleteByIdTipoRemision(int id) {
         tipo_remision_repositorio.deleteById(id);
         
     }
 
     @Override
-    public Boolean existsById(int id) {
+    public Boolean existsByIdTipoRemision(int id) {
         return tipo_remision_repositorio.existsById(id);
     }
 
@@ -36,21 +36,21 @@ public class tipo_remision_servicio_impl implements tipo_remision_servicio{
     }
 
     @Override
-    public tipo_remision findById(int id) {
-        tipo_remision tipo_remision = tipo_remision_repositorio.findById(id);
+    public tipo_remision findByIdTipoRemision(int id) {
+        tipo_remision tipo_remision = tipo_remision_repositorio.findByIdTipoRemision(id);
         return tipo_remision;   
     }
 
     @Override
-    public tipo_remision save(tipo_remision_DTO tipo_remision_DTO) {
+    public tipo_remision saveTipoRemision(tipo_remision_DTO tipo_remision_DTO) {
         tipo_remision tipo_remision = tipo_remision_mapper.convertDTOToObject(tipo_remision_DTO);
         return tipo_remision_repositorio.save(tipo_remision);
     }
 
     @Override
-    public tipo_remision update(int id, tipo_remision_DTO tipo_remision_DTO) {
-        tipo_remision tipo_remision = tipo_remision_repositorio.findById(id);
-        tipo_remision.setTipo_remision(tipo_remision_DTO.getTipo_remision());
+    public tipo_remision updateTipoRemision(int id, tipo_remision_DTO tipo_remision_DTO) {
+        tipo_remision tipo_remision = tipo_remision_repositorio.findByIdTipoRemision(id);
+        tipo_remision.setTipoRemision(tipo_remision_DTO.getTipoRemision());
         return null;
     } 
     

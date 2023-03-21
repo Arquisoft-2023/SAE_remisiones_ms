@@ -1,4 +1,4 @@
-package com.sae.remisiones.controladores;
+package com.sae.remisiones.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +21,6 @@ public class primera_escucha_controlador {
 
     @PostMapping("/crear")
     public ResponseEntity<primera_escucha> createCar(@RequestBody primera_escucha primera_escucha) {
-        return new ResponseEntity<>(primera_escucha_servicio_impl.crear_primera_escucha(primera_escucha), HttpStatus.CREATED);
+        return new ResponseEntity<>(primera_escucha_servicio_impl.crearPrimeraEscucha(primera_escucha), HttpStatus.CREATED);
     }
 }

@@ -1,5 +1,4 @@
-package com.sae.remisiones.controladores;
-
+package com.sae.remisiones.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,12 +35,17 @@ public class solicitud_remision_controlador {
     
     @GetMapping("/lista")
     public ResponseEntity<?> findAllRequest() {
-        return new ResponseEntity<>(solicitud_remision_servicio.findAllRequest(), HttpStatus.OK);
+        return new ResponseEntity<>(solicitud_remision_servicio.findAllSolicitudes(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/lista/{id}")
-    public ResponseEntity<?> findRequestsByTipo(@PathVariable int id) {
-        return new ResponseEntity<>(solicitud_remision_servicio.findRequestsByTipo(id), HttpStatus.OK);
+    @GetMapping(value = "/lista/{usuarioUnEstudiante}")
+    public ResponseEntity<?> findSolicitudByUsuarioUnEstudiante(@PathVariable String usuarioUnEstudiante) {
+        return new ResponseEntity<>(solicitud_remision_servicio.findAllSolicitudesByUsuarioUnEstudiante(usuarioUnEstudiante), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/lista/{usuarioUnDocente}")
+    public ResponseEntity<?> findSolicitudByUsuarioUnDocente(@PathVariable String usuarioUnDocente) {
+        return new ResponseEntity<>(solicitud_remision_servicio.findAllSolicitudesByUsuarioUnDocente(usuarioUnDocente), HttpStatus.OK);
     }
 
     @DeleteMapping( "/eliminar/{id}")
@@ -50,9 +54,9 @@ public class solicitud_remision_controlador {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping({ "/{solicitud_remision_id}" })
-    public ResponseEntity<?> update(@PathVariable("solicitud_remision_id") int solicitud_remision_id, @RequestBody solicitud_remision_DTO solicitud_remision_DTO) {
-        solicitud_remision solicitud_remision = solicitud_remision_servicio.updateRequest(solicitud_remision_id, solicitud_remision_DTO );
-        return new ResponseEntity<solicitud_remision>(solicitud_remision, HttpStatus.CREATED);
+    @PutMapping("/actulizar/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int solicitudRemisionId, @RequestBody solicitud_remision_DTO solicitud_remision_DTO){
+        solicitud_remision solicitud_remision = solicitud_remision_servicio.updateSolicitud(solicitudRemisionId, solicitud_remision_DTO);
+        return new ResponseEntity<solicitud_remision>(solicitud_remision, HttpStatus.CREATED);  
     }
 }

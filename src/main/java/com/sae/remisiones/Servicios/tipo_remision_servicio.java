@@ -7,16 +7,16 @@ import com.sae.remisiones.Entidades.tipo_remision;
 
 public interface tipo_remision_servicio {
     
-    tipo_remision findById(int id);
+    tipo_remision findByIdTipoRemision(int id);
 
-    Boolean existsById(int id);
+    Boolean existsByIdTipoRemision(int id);
 
-    tipo_remision save(tipo_remision_DTO tipo_remision_DTO);
+    tipo_remision saveTipoRemision(tipo_remision_DTO tipo_remision_DTO);
 
-    tipo_remision update(int id, tipo_remision_DTO tipo_remision_DTO);
+    tipo_remision updateTipoRemision(int id, tipo_remision_DTO tipo_remision_DTO);
 
 
     List<tipo_remision> findAll();
 
-    void deleteById(int id);
+    void deleteByIdTipoRemision(int id);
 } 

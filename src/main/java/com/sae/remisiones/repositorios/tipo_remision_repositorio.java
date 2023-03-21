@@ -1,6 +1,4 @@
-package com.sae.remisiones.repositorios;
-
-
+package com.sae.remisiones.Repositorios;
 
 //import java.util.List;
 
@@ -12,5 +10,5 @@ import com.sae.remisiones.Entidades.tipo_remision;
 
 @Repository
 public interface tipo_remision_repositorio extends JpaRepository<tipo_remision, Integer> {
-    tipo_remision findById(int id);
+    tipo_remision findByIdTipoRemision(int id);
 }

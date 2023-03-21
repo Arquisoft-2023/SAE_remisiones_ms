@@ -1,4 +1,4 @@
-package com.sae.remisiones.repositorios;
+package com.sae.remisiones.Repositorios;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

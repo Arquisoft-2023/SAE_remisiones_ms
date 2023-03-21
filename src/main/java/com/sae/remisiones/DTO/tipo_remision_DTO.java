@@ -11,8 +11,8 @@ import lombok.Setter;
 @Setter
 public class tipo_remision_DTO {
     
-    private int id_tipo_remision;
+    private int idTipoRemision;
 
-    private String tipo_remision;
+    private String tipoRemision;
 
 }

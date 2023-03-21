@@ -6,25 +6,27 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-import com.sae.remisiones.Entidades.tipo_remision;;
 
 @Data
 public class solicitud_remision_DTO {
     
     //@NotEmpty
-    private int id_solicitud_remision;
+    private int idSolicitudRemision;
 
     //@NotEmpty
-    private tipo_remision tipo_remision;
+    private int idTipoRemision;
 
     //@NotEmpty
-    private String usuario_un_estudiante;
+    private String tipoRemision;
 
     //@NotEmpty
-    private String usuario_un_docente;
+    private String usuarioUnEstudiante;
 
     //@NotEmpty
-    private LocalDate fecha;
+    private String usuarioUnDocente;
+
+    //@NotEmpty
+    private LocalDate fechaSolicitudRemision;
 
     //@NotEmpty
     private String justificacion;

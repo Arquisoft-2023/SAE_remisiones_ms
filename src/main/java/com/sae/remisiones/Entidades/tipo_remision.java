@@ -21,9 +21,9 @@ public class tipo_remision {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id_tipo_remision")
-    private int id_tipo_remision;
+    private int idTipoRemision;
 
     @Column(name = "tipo_remision")
-    private String tipo_remision;
-
+    private String tipoRemision;
+    
 }

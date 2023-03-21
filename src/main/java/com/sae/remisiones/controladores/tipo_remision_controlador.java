@@ -1,4 +1,4 @@
-package com.sae.remisiones.controladores;
+package com.sae.remisiones.Controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,15 +34,19 @@ public class tipo_remision_controlador {
 
     @GetMapping({ "/buscar/{id}" })
     public ResponseEntity<?> findById(@PathVariable("id") int id) {
-        tipo_remision tipo_remision = tipo_remision_servicio.findById(id);
+        tipo_remision tipo_remision = tipo_remision_servicio.findByIdTipoRemision(id);
         return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.OK);
     }
 
+    /*@GetMapping({ "/buscar/{id}" })
+    public ResponseEntity<?> findById(@PathVariable("id") int id) {
+        tipo_remision tipo_remision = tipo_remision_servicio.findByIdTipoRemision(id);
+        return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.OK);
+    }*/
+
     @PostMapping("/crear")
     public ResponseEntity<?> save(@RequestBody tipo_remision_DTO tipo_remision_DTO) {
-        tipo_remision tipo_remision = tipo_remision_servicio.save(tipo_remision_DTO);
+        tipo_remision tipo_remision = tipo_remision_servicio.saveTipoRemision(tipo_remision_DTO);
         return new ResponseEntity<tipo_remision>(tipo_remision, HttpStatus.CREATED);
     }
-
-
 }
