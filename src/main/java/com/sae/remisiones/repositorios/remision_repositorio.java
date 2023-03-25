@@ -9,5 +9,5 @@ import com.sae.remisiones.Entidades.remision;
 @Repository
 @Transactional
 public interface remision_repositorio extends JpaRepository<remision, Long> {
-    // Métodos personalizados si es necesario
+    remision findByIdRemision(int id);
 }

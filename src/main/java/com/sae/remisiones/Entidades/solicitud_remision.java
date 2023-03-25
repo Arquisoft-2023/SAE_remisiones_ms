@@ -40,6 +40,9 @@ public class solicitud_remision implements Serializable {
     @Column(name = "usuario_un_estudiante")
     private String usuarioUnEstudiante;
 
+    @Column(name = "programa_curricular")
+    private String programaCurricular;
+
     @Column(name = "usuario_un_docente")
     private String usuarioUnDocente;
 

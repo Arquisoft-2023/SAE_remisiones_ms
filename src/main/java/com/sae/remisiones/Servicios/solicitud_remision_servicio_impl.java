@@ -32,6 +32,7 @@ public class solicitud_remision_servicio_impl implements solicitud_remision_serv
         solicitud_remision.setEstado(false);
         solicitud_remision.setTipoRemision(tipo_remision);
         solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO.getUsuarioUnEstudiante());
+        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO.getProgramaCurricular());
         solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO.getUsuarioUnDocente());
         solicitud_remision.setJustificacion(solicitud_remision_DTO.getJustificacion());
 
@@ -46,6 +47,7 @@ public class solicitud_remision_servicio_impl implements solicitud_remision_serv
         solicitud_remision.setJustificacion(solicitud_remision_DTO.getJustificacion());
         solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO.getUsuarioUnDocente());
         solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO.getUsuarioUnEstudiante());
+        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO.getProgramaCurricular());
 
         return solicitud_remision_repositorio.save(solicitud_remision);
     }
@@ -74,6 +76,7 @@ public class solicitud_remision_servicio_impl implements solicitud_remision_serv
             solicitud_remision_DTO.setIdTipoRemision(listaSolicitudRemison.get(i).getTipoRemision().getIdTipoRemision());
             solicitud_remision_DTO.setTipoRemision(listaSolicitudRemison.get(i).getTipoRemision().getTipoRemision());
             solicitud_remision_DTO.setUsuarioUnEstudiante(listaSolicitudRemison.get(i).getUsuarioUnEstudiante());
+            solicitud_remision_DTO.setProgramaCurricular(listaSolicitudRemison.get(i).getProgramaCurricular());
             solicitud_remision_DTO.setUsuarioUnDocente(listaSolicitudRemison.get(i).getUsuarioUnDocente());
             solicitud_remision_DTO.setFechaSolicitudRemision(listaSolicitudRemison.get(i).getFechaSolicitudRemision());
             solicitud_remision_DTO.setJustificacion(listaSolicitudRemison.get(i).getJustificacion());

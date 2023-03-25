@@ -23,8 +23,11 @@ public class solicitud_remision_DTO {
     private String usuarioUnEstudiante;
 
     //@NotEmpty
-    private String usuarioUnDocente;
+    private String programaCurricular;
 
+    //@NotEmpty
+    private String usuarioUnDocente;
+    
     //@NotEmpty
     private LocalDate fechaSolicitudRemision;
 
