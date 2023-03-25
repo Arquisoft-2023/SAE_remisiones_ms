@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sae.remisiones.DTO.solicitud_remision_DTO;
+import com.sae.remisiones.DTO.solicitud_remision_DTO_c;
 import com.sae.remisiones.Entidades.solicitud_remision;
 import com.sae.remisiones.Servicios.solicitud_remision_servicio;
 
@@ -28,8 +28,8 @@ public class solicitud_remision_controlador {
     
 
     @PostMapping("/crear")
-    public ResponseEntity<?> save(@RequestBody solicitud_remision_DTO solicitud_remision_DTO) {
-        solicitud_remision solicitud_remision = solicitud_remision_servicio.saveSolicitud(solicitud_remision_DTO);
+    public ResponseEntity<?> save(@RequestBody solicitud_remision_DTO_c solicitud_remision_DTO_c) {
+        solicitud_remision solicitud_remision = solicitud_remision_servicio.saveSolicitud(solicitud_remision_DTO_c);
         return new ResponseEntity<solicitud_remision>(solicitud_remision, HttpStatus.CREATED);
     }
     
@@ -50,13 +50,13 @@ public class solicitud_remision_controlador {
 
     @DeleteMapping( "/eliminar/{id}")
     public ResponseEntity<?> elimina(@PathVariable("id")int id) {
-        solicitud_remision_servicio.deleteByIdRequest(id);
+        solicitud_remision_servicio.deleteByIdSolicitud(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/actulizar/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int solicitudRemisionId, @RequestBody solicitud_remision_DTO solicitud_remision_DTO){
-        solicitud_remision solicitud_remision = solicitud_remision_servicio.updateSolicitud(solicitudRemisionId, solicitud_remision_DTO);
+    public ResponseEntity<?> update(@PathVariable("id") int solicitudRemisionId, @RequestBody solicitud_remision_DTO_c solicitud_remision_DTO_c){
+        solicitud_remision solicitud_remision = solicitud_remision_servicio.updateSolicitud(solicitudRemisionId, solicitud_remision_DTO_c);
         return new ResponseEntity<solicitud_remision>(solicitud_remision, HttpStatus.CREATED);  
     }
 }

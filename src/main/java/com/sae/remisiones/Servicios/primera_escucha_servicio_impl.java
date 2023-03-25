@@ -39,7 +39,8 @@ public class primera_escucha_servicio_impl implements primera_escucha_servicio{
     @Override
     public primera_escucha savePrimeraEscucha(primera_escucha_DTO primera_escucha_DTO) {
         primera_escucha primera_escucha = primera_escucha_mapper.convertDTOToObject(primera_escucha_DTO);
-        return primera_escucha_repositorio.save(primera_escucha);
+        primera_escucha_repositorio.save(primera_escucha);
+        return primera_escucha;
     }
 
     @Override

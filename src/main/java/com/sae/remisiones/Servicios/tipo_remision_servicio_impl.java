@@ -33,7 +33,7 @@ public class tipo_remision_servicio_impl implements tipo_remision_servicio{
     @Override
     public tipo_remision findByIdTipoRemision(int id) {
         tipo_remision tipo_remision = tipo_remision_repositorio.findByIdTipoRemision(id);
-        return tipo_remision;   
+        return tipo_remision;       
     }
 
     @Override

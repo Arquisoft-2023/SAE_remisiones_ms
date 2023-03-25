@@ -2,18 +2,19 @@ package com.sae.remisiones.Servicios;
 
 import java.util.List;
 import com.sae.remisiones.DTO.solicitud_remision_DTO;
+import com.sae.remisiones.DTO.solicitud_remision_DTO_c;
 import com.sae.remisiones.Entidades.solicitud_remision;
 
 public interface solicitud_remision_servicio {
     
     //crear solicitud
-    solicitud_remision saveSolicitud(solicitud_remision_DTO solicitud_remision_DTO);
+    solicitud_remision saveSolicitud(solicitud_remision_DTO_c solicitud_remision_DTO_c);
 
     //actualizar solicitud
-    solicitud_remision updateSolicitud (int solicitud_remision, solicitud_remision_DTO solicitud_remision_DTO);
+    solicitud_remision updateSolicitud (int solicitud_remision, solicitud_remision_DTO_c solicitud_remision_DTO_c);
 
     //eliminar solicitud por ID
-    void deleteByIdRequest(int id);
+    void deleteByIdSolicitud(int id);
 
     //encontrar solicitud por ID de solicitud
     solicitud_remision findByIdSolicitudRemision(int id);

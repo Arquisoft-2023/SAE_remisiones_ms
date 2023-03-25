@@ -32,12 +32,12 @@ public class remision {
     //relacion 1 a 1 con la tabla solicitud_remision
     @OneToOne
     @JoinColumn(name = "id_solicitud_remision")
-    private solicitud_remision idSolicitudRemision;
+    private solicitud_remision solicitudRemision;
 
     //relacion 1 a 1 con la tabla primera_escucha
     @OneToOne
     @JoinColumn(name = "id_primera_escucha")
-    private primera_escucha idPrimeraEscucha;
+    private primera_escucha primeraEscucha;
 
     @Column(name = "fecha_envio_remision")
     private LocalDate fechaEnvioRemision;

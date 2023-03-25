@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sae.remisiones.DTO.solicitud_remision_DTO;
+import com.sae.remisiones.DTO.solicitud_remision_DTO_c;
 import com.sae.remisiones.Entidades.solicitud_remision;
 import com.sae.remisiones.Entidades.tipo_remision;
 import com.sae.remisiones.Repositorios.solicitud_remision_repositorio;
@@ -21,39 +22,40 @@ public class solicitud_remision_servicio_impl implements solicitud_remision_serv
     private tipo_remision_servicio tipo_remision_servicio;
 
     @Override
-    public solicitud_remision saveSolicitud(solicitud_remision_DTO solicitud_remision_DTO) {
-        tipo_remision tipo_remision = tipo_remision_servicio.findByIdTipoRemision(solicitud_remision_DTO.getIdTipoRemision());
+    public solicitud_remision saveSolicitud(solicitud_remision_DTO_c solicitud_remision_DTO_c) {
+        tipo_remision tipo_remision = tipo_remision_servicio.findByIdTipoRemision(solicitud_remision_DTO_c.getIdTipoRemision());
 
         LocalDate fecha_solicitud_remision = LocalDate.now();
 
         solicitud_remision solicitud_remision = new solicitud_remision();
 
-        solicitud_remision.setFechaSolicitudRemision(fecha_solicitud_remision);
-        solicitud_remision.setEstado(false);
         solicitud_remision.setTipoRemision(tipo_remision);
-        solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO.getUsuarioUnEstudiante());
-        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO.getProgramaCurricular());
-        solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO.getUsuarioUnDocente());
-        solicitud_remision.setJustificacion(solicitud_remision_DTO.getJustificacion());
+        solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO_c.getUsuarioUnEstudiante());
+        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO_c.getProgramaCurricular());
+        solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO_c.getUsuarioUnDocente());
+        solicitud_remision.setFechaSolicitudRemision(fecha_solicitud_remision);
+        solicitud_remision.setJustificacion(solicitud_remision_DTO_c.getJustificacion());
+        solicitud_remision.setEstado(false);
 
         return solicitud_remision_repositorio.save(solicitud_remision);
     }
 
     @Override
-    public solicitud_remision updateSolicitud(int solicitudRemisionId, solicitud_remision_DTO solicitud_remision_DTO) {
+    public solicitud_remision updateSolicitud(int solicitudRemisionId, solicitud_remision_DTO_c solicitud_remision_DTO_c) {
         solicitud_remision solicitud_remision = this.findByIdSolicitudRemision(solicitudRemisionId);
 
-        solicitud_remision.setEstado(true);
-        solicitud_remision.setJustificacion(solicitud_remision_DTO.getJustificacion());
-        solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO.getUsuarioUnDocente());
-        solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO.getUsuarioUnEstudiante());
-        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO.getProgramaCurricular());
+        solicitud_remision.setEstado(solicitud_remision.getEstado());
+        solicitud_remision.setTipoRemision(tipo_remision_servicio.findByIdTipoRemision(solicitud_remision_DTO_c.getIdTipoRemision()));
+        solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO_c.getUsuarioUnEstudiante());
+        solicitud_remision.setProgramaCurricular(solicitud_remision_DTO_c.getProgramaCurricular());
+        solicitud_remision.setUsuarioUnDocente(solicitud_remision_DTO_c.getUsuarioUnDocente());
+        solicitud_remision.setJustificacion(solicitud_remision_DTO_c.getJustificacion());
 
         return solicitud_remision_repositorio.save(solicitud_remision);
     }
 
     @Override
-    public void deleteByIdRequest(int id) {
+    public void deleteByIdSolicitud(int id) {
         solicitud_remision solicitud_remision = this.findByIdSolicitudRemision(id);
         solicitud_remision_repositorio.delete(solicitud_remision);
     }
