@@ -4,6 +4,7 @@ import com.sae.remisiones.DTO.remision_DTO_reporte;
 
 import java.util.List;
 
+import com.sae.remisiones.DTO.primera_escucha_DTO;
 import com.sae.remisiones.DTO.remision_DTO;
 import com.sae.remisiones.Entidades.remision;
 
@@ -26,4 +27,6 @@ public interface remision_servicio {
     List<remision_DTO_reporte> findAllRemisionesByRemisionEfectiva();
 
     void deleteByIdRemision(int id);
+
+    remision updateRemisionEfectiva (int idRemision, primera_escucha_DTO primera_escucha_DTO);
 }

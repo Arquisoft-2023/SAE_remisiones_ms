@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.sae.remisiones.DTO.primera_escucha_DTO;
 import com.sae.remisiones.DTO.remision_DTO;
 import com.sae.remisiones.DTO.remision_DTO_reporte;
+import com.sae.remisiones.Entidades.primera_escucha;
 import com.sae.remisiones.Entidades.remision;
 import com.sae.remisiones.Entidades.solicitud_remision;
+import com.sae.remisiones.Repositorios.primera_escucha_repositorio;
 import com.sae.remisiones.Repositorios.remision_repositorio;
 
 @Service
@@ -19,6 +21,8 @@ public class remision_servicio_impl implements remision_servicio{
 
     @Autowired
     private primera_escucha_servicio primera_escucha_servicio;
+    @Autowired
+    private primera_escucha_repositorio primera_escucha_repositorio;
     @Autowired
     private solicitud_remision_servicio solicitud_remision_servicio;
     @Autowired
@@ -29,7 +33,7 @@ public class remision_servicio_impl implements remision_servicio{
         
         solicitud_remision solicitud_remision = solicitud_remision_servicio.findByIdSolicitudRemision(remision_DTO.getIdSolicitudRemision());
         
-        primera_escucha_DTO primera_escucha_DTO = new primera_escucha_DTO(remision_DTO.getObservacionPrimeraEscucha(),remision_DTO.getFechaPrimeraEscucha());
+        primera_escucha_DTO primera_escucha_DTO = new primera_escucha_DTO(remision_DTO.getFechaPrimeraEscucha());
 
         remision remision = new remision();
 
@@ -158,7 +162,28 @@ public class remision_servicio_impl implements remision_servicio{
     @Override
     public void deleteByIdRemision(int id) {
         remision remision = this.findByIdRemision(id);
+        primera_escucha primera_escucha = primera_escucha_servicio.findByIdPrimeraEscucha(remision.getPrimeraEscucha().getIdPrimeraEscucha());
         remision_repositorio.delete(remision);
+        primera_escucha_repositorio.delete(primera_escucha);
     }
+
+    @Override
+    public remision updateRemisionEfectiva(int idRemision, primera_escucha_DTO primera_escucha_DTO) {
+
+        remision remision = remision_repositorio.findByIdRemision(idRemision);
+        primera_escucha primera_escucha = primera_escucha_servicio.findByIdPrimeraEscucha(remision.getPrimeraEscucha().getIdPrimeraEscucha());
+        primera_escucha.setObservacion(primera_escucha_DTO.getObservacion());
+        primera_escucha.setRealizada(primera_escucha_DTO.isRealizada());
+
+        primera_escucha_repositorio.save(primera_escucha);
+
+        remision.getPrimeraEscucha().setObservacion(primera_escucha_DTO.getObservacion());
+        remision.setRemisionEfectiva(primera_escucha_DTO.isRealizada());
+
+        return remision_repositorio.save(remision);
+
+    }
+
+    
 
 }

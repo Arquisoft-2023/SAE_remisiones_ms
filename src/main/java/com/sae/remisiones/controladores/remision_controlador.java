@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.sae.remisiones.Servicios.remision_servicio;
+import com.sae.remisiones.DTO.primera_escucha_DTO;
 import com.sae.remisiones.DTO.remision_DTO;
 import com.sae.remisiones.Entidades.remision;
 
@@ -42,10 +44,16 @@ public class remision_controlador {
         return new ResponseEntity<>(remision_servicio.findAllRemisionesByRemisionEfectiva(), HttpStatus.OK);
     }
 
-    @DeleteMapping( "/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> elimina(@PathVariable("id")int id) {
         remision_servicio.deleteByIdRemision(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PutMapping("/primeraEscucha/{id}")
+    public ResponseEntity<?> updateRemisionEfectiva(@PathVariable("id")int id, @RequestBody primera_escucha_DTO primera_escucha_DTO){
+        remision_servicio.updateRemisionEfectiva(id, primera_escucha_DTO);
+        return new ResponseEntity<remision>(HttpStatus.NO_CONTENT);
     }
 
 }
