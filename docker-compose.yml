@@ -4,6 +4,7 @@ services:
   sae_remisiones_db:
     image: postgres:13
     container_name: sae_remisiones_db
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -16,11 +17,13 @@ services:
     networks:
       nodes-networks:
         aliases:
-          - sae_tutorias_db
+          - sae_remisiones_db
 
   sae_remisiones_ms:
     build: .
     container_name: sae_remisiones_ms
+    image: sae_remisiones_ms
+    restart: always
     ports:
       - "127.0.0.4:3023:8082"
     depends_on:
@@ -33,7 +36,7 @@ services:
     networks:
       nodes-networks:
         aliases:
-          - sae_tutorias_db
+          - sae_remisiones_ms
 
 networks:
   nodes-networks:
