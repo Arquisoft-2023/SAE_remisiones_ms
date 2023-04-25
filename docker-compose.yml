@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  sae_remisiones_db:
+    image: postgres:13
+    container_name: sae_remisiones_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: SAE_remisiones_db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+    ports:
+      - "5434:5432"
+    networks:
+      nodes-networks:
+        aliases:
+          - sae_tutorias_db
+
+  sae_remisiones_ms:
+    build: .
+    container_name: sae_remisiones_ms
+    ports:
+      - "127.0.0.4:3023:8082"
+    depends_on:
+      - sae_remisiones_db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://sae_remisiones_db:5432/SAE_remisiones_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.PostgreSQLDialect
+    networks:
+      nodes-networks:
+        aliases:
+          - sae_tutorias_db
+
+networks:
+  nodes-networks:
+    external: true

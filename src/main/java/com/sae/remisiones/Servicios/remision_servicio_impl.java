@@ -15,6 +15,7 @@ import com.sae.remisiones.Entidades.remision;
 import com.sae.remisiones.Entidades.solicitud_remision;
 import com.sae.remisiones.Repositorios.primera_escucha_repositorio;
 import com.sae.remisiones.Repositorios.remision_repositorio;
+import com.sae.remisiones.Repositorios.solicitud_remision_repositorio;
 
 @Service
 public class remision_servicio_impl implements remision_servicio{
@@ -23,8 +24,12 @@ public class remision_servicio_impl implements remision_servicio{
     private primera_escucha_servicio primera_escucha_servicio;
     @Autowired
     private primera_escucha_repositorio primera_escucha_repositorio;
+
     @Autowired
     private solicitud_remision_servicio solicitud_remision_servicio;
+    @Autowired
+    private solicitud_remision_repositorio solicitud_remision_repositorio;
+
     @Autowired
     private remision_repositorio remision_repositorio;
 
@@ -163,6 +168,9 @@ public class remision_servicio_impl implements remision_servicio{
     public void deleteByIdRemision(int id) {
         remision remision = this.findByIdRemision(id);
         primera_escucha primera_escucha = primera_escucha_servicio.findByIdPrimeraEscucha(remision.getPrimeraEscucha().getIdPrimeraEscucha());
+        solicitud_remision solicitud_remision = solicitud_remision_servicio.findByIdSolicitudRemision(remision.getSolicitudRemision().getIdSolicitudRemision());
+        solicitud_remision.setEstado(false);
+        solicitud_remision_repositorio.save(solicitud_remision);
         remision_repositorio.delete(remision);
         primera_escucha_repositorio.delete(primera_escucha);
     }
