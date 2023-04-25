@@ -36,7 +36,7 @@ services:
     networks:
       nodes-networks:
         aliases:
-          - sae_remisiones_ms
+          - saeRemisionesMs
 
 volumes:
   postgres-data:
