@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: SAE_remisiones_db
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
       - ./create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
     ports:
       - "5434:5432"
@@ -37,6 +37,9 @@ services:
       nodes-networks:
         aliases:
           - sae_remisiones_ms
+
+volumes:
+  postgres-data:
 
 networks:
   nodes-networks:
