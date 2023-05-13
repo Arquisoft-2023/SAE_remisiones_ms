@@ -49,7 +49,7 @@ public class primera_escucha_servicio_impl implements primera_escucha_servicio{
         primera_escucha.setFechaPrimeraEscucha(primera_escucha_DTO.getFechaPrimeraEscucha());
         primera_escucha.setObservacion(primera_escucha_DTO.getObservacion());
         primera_escucha.setRealizada(primera_escucha_DTO.isRealizada());
-        return null;
+        return primera_escucha_repositorio.save(primera_escucha);
     } 
     
 }
