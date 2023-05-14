@@ -55,8 +55,8 @@ public class solicitud_remision_controlador {
     }
 
     @PutMapping("/actulizar/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int solicitudRemisionId, @RequestBody solicitud_remision_DTO_c solicitud_remision_DTO_c){
-        solicitud_remision solicitud_remision = solicitud_remision_servicio.updateSolicitud(solicitudRemisionId, solicitud_remision_DTO_c);
-        return new ResponseEntity<solicitud_remision>(solicitud_remision, HttpStatus.CREATED);  
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody solicitud_remision_DTO_c solicitud_remision_DTO_c){
+        solicitud_remision_servicio.updateSolicitud(id, solicitud_remision_DTO_c);
+        return new ResponseEntity<solicitud_remision>(HttpStatus.NO_CONTENT);
     }
 }

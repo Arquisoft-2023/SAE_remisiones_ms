@@ -46,7 +46,7 @@ public class tipo_remision_servicio_impl implements tipo_remision_servicio{
     public tipo_remision updateTipoRemision(int id, tipo_remision_DTO tipo_remision_DTO) {
         tipo_remision tipo_remision = tipo_remision_repositorio.findByIdTipoRemision(id);
         tipo_remision.setTipoRemision(tipo_remision_DTO.getTipoRemision());
-        return null;
+        return tipo_remision_repositorio.save(tipo_remision);
     } 
     
 }

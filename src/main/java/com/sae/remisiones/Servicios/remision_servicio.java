@@ -15,9 +15,6 @@ public interface remision_servicio {
     //crear solicitud
     remision saveRemision(remision_DTO remision_DTO);
 
-    //actualizar solicitud
-    remision updateRemision (int idRemision, remision_DTO remision_DTO);
-
     remision findByIdRemision(int id);
 
     List<remision_DTO_reporte> findAllRemisiones();
