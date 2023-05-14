@@ -44,7 +44,6 @@ public class solicitud_remision_servicio_impl implements solicitud_remision_serv
     public solicitud_remision updateSolicitud(int solicitudRemisionId, solicitud_remision_DTO_c solicitud_remision_DTO_c) {
         solicitud_remision solicitud_remision = this.findByIdSolicitudRemision(solicitudRemisionId);
 
-        solicitud_remision.setEstado(solicitud_remision.getEstado());
         solicitud_remision.setTipoRemision(tipo_remision_servicio.findByIdTipoRemision(solicitud_remision_DTO_c.getIdTipoRemision()));
         solicitud_remision.setUsuarioUnEstudiante(solicitud_remision_DTO_c.getUsuarioUnEstudiante());
         solicitud_remision.setProgramaCurricular(solicitud_remision_DTO_c.getProgramaCurricular());

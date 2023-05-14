@@ -52,25 +52,6 @@ public class remision_servicio_impl implements remision_servicio{
     }
 
     @Override
-    public remision updateRemision(int idRemision, remision_DTO remision_DTO) {
-        
-        remision remision = this.findByIdRemision(idRemision);
-
-        solicitud_remision solicitud_remision = solicitud_remision_servicio.findByIdSolicitudRemision(remision_DTO.getIdSolicitudRemision());
-
-        remision.setSolicitudRemision(solicitud_remision);
-        remision.getSolicitudRemision().setEstado(true);
-        remision.getPrimeraEscucha().setFechaPrimeraEscucha(remision_DTO.getFechaPrimeraEscucha());
-        remision.getPrimeraEscucha().setObservacion(remision_DTO.getObservacionPrimeraEscucha());
-        remision.getPrimeraEscucha().setRealizada(remision_DTO.isRemisionEfectiva());
-        remision.setFechaEnvioRemision(LocalDate.now());
-        remision.setRemisionEfectiva(remision_DTO.isRemisionEfectiva());
-
-        return remision_repositorio.save(remision);
-
-    }
-
-    @Override
     public remision findByIdRemision(int id) {
         remision remision = remision_repositorio.findByIdRemision(id);
         return remision;
